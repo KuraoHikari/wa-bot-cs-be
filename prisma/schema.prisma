@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  password    String
+  phoneNumber String
+  setting     Setting?
+
+  createdAt DateTime @default(now())
+
+  messages      Message[]
+  contacts      Contact[]
+  contactLimits ContactLimit[]
+
+  @@map("users")
+}
+
+model Message {
+  id   Int    @id @default(autoincrement())
+  from String
+  to   String
+
+  aiMessage Boolean
+  content   String
+
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+  userId    Int
+
+  @@map("messages")
+}
+
+model Contact {
+  id         Int     @id @default(autoincrement())
+  number     String
+  notifyName String?
+  nameByUser String?
+  note       String?
+
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+  userId    Int
+
+  contactLimits ContactLimit[]
+
+  @@unique([number, userId])
+  @@map("contacts")
+}
+
+model Setting {
+  id             Int     @id @default(autoincrement())
+  stopAiResponse Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique // relation scalar field (used in the `@relation` attribute above)
+
+  @@map("settings")
+}
+
+model ContactLimit {
+  limitAiResponse Boolean @default(false)
+  limitationCount Int     @default(5)
+  stopAiResponse  Boolean @default(false)
+  User            User    @relation(fields: [userId], references: [id])
+  userId          Int
+  Contact         Contact @relation(fields: [contactId], references: [id])
+  contactId       Int
+
+  @@unique([contactId, userId])
+  @@map("contactLimits")
+}
