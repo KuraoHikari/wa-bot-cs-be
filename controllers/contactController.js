@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 export async function getContacts(req, res) {
  try {
-  const { page = "1", limit = "10" } = req.query;
+  const { page = "1", limit = "5" } = req.query;
 
   const { number } = req.body;
 

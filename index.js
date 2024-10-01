@@ -6,6 +6,9 @@ import qrcode from "qrcode";
 import router from "./routes/index.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+import path from "path";
+import multer from "multer";
+import { loadPDFIntoPinecone } from "./utils/pinecone.js";
 
 const app = express();
 app.use(express.json());
@@ -29,6 +32,24 @@ app.get("/get-qr", async (req, res) => {
    .catch((err) => res.status(500).send({ error: err.message }));
  });
 });
+
+// Configure multer for file uploads
+
+// Route to handle PDF upload
+// app.post("/upload", upload.single("pdf"), async (req, res) => {
+//  try {
+//   const filePath = req.file.path; // Get the path to the uploaded file
+//   console.log("File uploaded successfully:", filePath);
+
+//   // Call your function to process the PDF
+//   await loadPDFIntoPinecone(filePath);
+
+//   res.status(200).send("PDF successfully uploaded and processed.");
+//  } catch (error) {
+//   console.error("Error processing PDF:", error);
+//   res.status(500).send("Error processing PDF.");
+//  }
+// });
 
 // app.get("/get-qr-once", (req, res) => {
 //  // Listen for the QR code event

@@ -10,7 +10,6 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-import qrcode from "qrcode";
 import { getContext } from "./context.js";
 
 const client = new Client({
@@ -19,12 +18,20 @@ const client = new Client({
 });
 
 client.on("qr", (qr) => {
+ if (client.info && client.info.wid) {
+  console.log(
+   "Client is connected and has the following WhatsApp ID:",
+   client.info.wid._serialized
+  );
+ } else {
+  console.log("Client is not connected.");
+ }
  // Log QR code, you can send it to the frontend via WebSocket or REST API
- console.log("QR RECEIVED", qr);
- qrcode
-  .toString(qr, { type: "terminal" })
-  .then((url) => console.log(url))
-  .catch((err) => console.error(err));
+ //  console.log("QR RECEIVED", qr);
+ //  qrcode
+ //   .toString(qr, { type: "terminal" })
+ //   .then((url) => console.log(url))
+ //   .catch((err) => console.error(err));
 });
 
 client.on("authenticated", () => {
@@ -148,42 +155,26 @@ client.on("message", async (message) => {
       });
      }
 
-     const context = await getContext(
-      message.body,
-      "./070323_CP_Wahana_Adya.pdf"
-     );
-
-     const prompt = {
+     const context = await getContext(message.body, userAuth.setting.pdf);
+     const promtFromDb = {
       role: "system",
-      content: `AI assistant is a professional and polite customer service work at PT. Wahana Adya representative.
-           The traits of AI include expert knowledge, helpfulness, cleverness, and articulateness.
-           AI assistant provides clear, concise, and friendly responses without repeating unnecessary information or phrases such as "Berdasarkan informasi yang diberikan sebelumnya.", "dalam konteks yang diberikan.", "dalam konteks yang tersedia."
-           AI is a well-behaved and well-mannered individual.
-           AI is always friendly, kind, and inspiring, and he is eager to provide vivid and thoughtful responses to the user.
-           AI has the sum of all knowledge in their brain, and is able to accurately answer nearly any question about any topic in conversation.
-           AI assistant make answer using Indonesian Language.
-           AI assistant avoids sounding repetitive and ensures responses sound natural and tailored to each question.
-           If the context does not provide the answer to question, the AI assistant will say, "Mohon Maaf, tapi saya tidak dapat menjawab pertanyaan tersebut saat ini.".
-           START CONTEXT BLOCK
-      ${context}
-           END OF CONTEXT BLOCK
-           AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
-           If the context does not provide the answer to question, the AI assistant will say, "Mohon Maaf, tapi saya tidak dapat menjawab pertanyaan tersebut saat ini.".
-           AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
-           AI assistant will not invent anything that is not drawn directly from the context.
-           `,
+      content: userAuth.setting.prompt.replace("{{context}}", context),
      };
 
      const response = await openai.chat.completions.create({
-      model: "chatgpt-4o-latest",
+      model: userAuth.setting.gptModel,
       messages: [
-       prompt,
+       promtFromDb,
        {
         role: "user",
         content: message.body,
        },
       ],
      });
+     // console.log(
+     //  "🚀 ~ client.on ~ response2:",
+     //  response.choices[0].message.content
+     // );
 
      await prisma.message.create({
       data: {
@@ -199,51 +190,6 @@ client.on("message", async (message) => {
       message.reply(response.choices[0].message.content);
     }
    }
-
-   //checkForAiResponse
-
-   //upsertcontact
-
-   //    const context = await getContext(
-   //     message.body,
-   //     "./070323_CP_Wahana_Adya.pdf"
-   //    );
-
-   //    const prompt = {
-   //     role: "system",
-   //     content: `AI assistant is a professional and polite customer service work at PT. Wahana Adya representative.
-   //       The traits of AI include expert knowledge, helpfulness, cleverness, and articulateness.
-   //       AI assistant provides clear, concise, and friendly responses without repeating unnecessary information or phrases such as "Berdasarkan informasi yang diberikan sebelumnya.", "dalam konteks yang diberikan.", "dalam konteks yang tersedia."
-   //       AI is a well-behaved and well-mannered individual.
-   //       AI is always friendly, kind, and inspiring, and he is eager to provide vivid and thoughtful responses to the user.
-   //       AI has the sum of all knowledge in their brain, and is able to accurately answer nearly any question about any topic in conversation.
-   //       AI assistant make answer using Indonesian Language.
-   //       AI assistant avoids sounding repetitive and ensures responses sound natural and tailored to each question.
-   //       If the context does not provide the answer to question, the AI assistant will say, "Mohon Maaf, tapi saya tidak dapat menjawab pertanyaan tersebut saat ini.".
-   //       START CONTEXT BLOCK
-   //  ${context}
-   //       END OF CONTEXT BLOCK
-   //       AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
-   //       If the context does not provide the answer to question, the AI assistant will say, "Mohon Maaf, tapi saya tidak dapat menjawab pertanyaan tersebut saat ini.".
-   //       AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
-   //       AI assistant will not invent anything that is not drawn directly from the context.
-   //       `,
-   //    };
-
-   //    const response = await openai.chat.completions.create({
-   //     model: "chatgpt-4o-latest",
-   //     messages: [
-   //      prompt,
-   //      {
-   //       role: "user",
-   //       content: message.body,
-   //      },
-   //     ],
-   //    });
-
-   //    //   console.log("🚀 ~ client.on ~ response:", response);
-   //    //   console.log("🚀 ~ client.on ~ response:", response.choices[0].message);
-   //    message.reply(response.choices[0].message.content);
   } catch (error) {
    console.log("🚀 ~ client.on ~ error:", error);
   }

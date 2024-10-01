@@ -28,15 +28,15 @@ export async function loadPDFIntoPinecone(filePath) {
 
  // If you want to load the PDF, uncomment this section when ready
  const loader = new PDFLoader(filePath);
- //  console.log("🚀 ~ loadPDFIntoPinecone ~ loader:", loader);
+ console.log("🚀 ~ loadPDFIntoPinecone ~ loader:", loader);
  const pages = await loader.load();
- //  console.log("🚀 ~ loadPDFIntoPinecone ~ pages:", pages);
+ console.log("🚀 ~ loadPDFIntoPinecone ~ pages:", pages);
 
  const documents = await Promise.all(pages.map(prepareDocument));
- //  console.log("🚀 ~ loadPDFIntoPinecone ~ documents:", documents);
+ console.log("🚀 ~ loadPDFIntoPinecone ~ documents:", documents);
 
  const vectors = await Promise.all(documents.flat().map(embedDocument));
- //  console.log("🚀 ~ loadPDFIntoPinecone ~ vectors:", vectors);
+ console.log("🚀 ~ loadPDFIntoPinecone ~ vectors:", vectors);
 
  const client = await getPineconeClient();
  const pineconeIndex = await client.index("chatpdf");

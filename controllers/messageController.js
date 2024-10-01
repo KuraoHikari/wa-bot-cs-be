@@ -34,7 +34,7 @@ export async function getMessages(req, res) {
    data: messages,
    total: totalMessages,
    page: pageNum,
-   totalPages: Math.ceil(totalContacts / limitNum),
+   totalPages: Math.ceil(totalMessages / limitNum),
   });
  } catch (error) {
   console.log("🚀 ~ getContacts ~ error:", error);
