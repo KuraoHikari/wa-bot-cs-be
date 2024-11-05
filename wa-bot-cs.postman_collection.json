@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "b22d8a43-0079-4000-aede-378af25e81e7",
+		"name": "wa-bot-cs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16904109"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "loginAuth Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "aaaaa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "dewa@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "snalknajnxlkancxlksxlkc",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://wa-bot-cs-proxy.vercel.app/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "loginAuth Copy 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "aaaaa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "dewa@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "snalknajnxlkancxlksxlkc",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://wa-bot-cs-proxy.vercel.app/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterAuth Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "aaaaa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "dewa@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "snalknajnxlkancxlksxlkc",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "6285156957302",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://wa-bot-cs-proxy.vercel.app/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Setting",
+			"item": [
+				{
+					"name": "getSetting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": "https://wa-bot-cs-proxy.vercel.app/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "getPdfusingProxy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzMwNzc4OTc3fQ.QnyO7BaLR8XNnu6vfWNz-DZnfvk7s2uhs_qvm3WKQFs",
+								"type": "text"
+							}
+						],
+						"url": "https://wa-bot-cs-proxy.vercel.app/proxy/pdf/1727663922812.pdf"
+					},
+					"response": []
+				},
+				{
+					"name": "updateSetting",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stopAiResponse\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/setting"
+					},
+					"response": []
+				},
+				{
+					"name": "updateSetting Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gptModel\": \"gpt-3.5-turbo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://wa-bot-cs-proxy.vercel.app/setting/gpt"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "getMessage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://wa-bot-cs-proxy.vercel.app/message?page=1",
+							"protocol": "https",
+							"host": [
+								"wa-bot-cs-proxy",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"message"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": "https://wa-bot-cs-proxy.vercel.app/user"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserStat",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": "https://wa-bot-cs-proxy.vercel.app/user/stat"
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": 6285156957302\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://wa-bot-cs-proxy.vercel.app/user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "getContacts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/contact?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"contact"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getContact",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5000/contact/6283114227556@c.us"
+					},
+					"response": []
+				},
+				{
+					"name": "getContactLimit",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:5000/contact/6283114227556@c.us"
+					},
+					"response": []
+				},
+				{
+					"name": "updateContact",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"note\": \"\",\r\n    \"nameByUser\": \"dewa gede\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/contact/1/limit"
+					},
+					"response": []
+				},
+				{
+					"name": "updateContactLimit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"limitAiResponse\": false,\r\n    \"limitationCount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/contact/1/limit"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gr-code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+						"type": "text"
+					}
+				],
+				"url": "https://wa-bot-cs-proxy.vercel.app/whatsapp/qr-code"
+			},
+			"response": []
+		},
+		{
+			"name": "gr-code Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NDAxODk1fQ.8ZsP0UQRZiRYH4jPAAJ1msPpvkUxo5n2Xdr1ehHoW4Y",
+						"type": "text"
+					}
+				],
+				"url": "https://wa-bot-cs-proxy.vercel.app/whatsapp/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "uploadPdfSetting",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkZXdhQG1haWwuY29tIiwiaWF0IjoxNzI3NjY4NzI3fQ.I_pb87yFz3HET5LUzurpaEnCgG2YHYxQ8yGE2mEoR7U",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pdf",
+							"type": "file",
+							"src": "/C:/Users/El-Condor-pasa/Downloads/070323_CP_Wahana_Adya.pdf"
+						}
+					]
+				},
+				"url": "https://wa-bot-cs-proxy.vercel.app/setting/upload-pdf"
+			},
+			"response": []
+		}
+	]
+}

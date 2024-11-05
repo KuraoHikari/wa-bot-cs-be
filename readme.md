@@ -1,3 +1,21 @@
+# Table of Content
+
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Wa Bot CS BE RESTful API](#wa-bot-cs-be-restful-api)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Database Design](#database-design)
+  - [Demo](#demo)
+  - [Dependencies](#dependencies)
+  - [Acknowledgements](#acknowledgements)
+  - [Authors](#authors)
+  - [License](#license)
+
+<!-- TOC end -->
+
+<!-- TOC --><a name="wa-bot-cs-be-restful-api"></a>
+
 # Wa Bot CS BE RESTful API
 
 This project is a RESTful API designed for managing operations in "Wa Bot CS BE", using Node.js and various other technologies like Prisma, OpenAI, PinecodeDB, and Express.
@@ -57,6 +75,8 @@ Follow these steps to install and run the project:
      npm run dev
      ```
 
+<!-- TOC --><a name="database-design"></a>
+
 ## Database Design
 
 To get a better understanding of the database structure, you can view the Entity Relationship Diagram (ERD) for Wa Bot CS BE:
@@ -66,6 +86,16 @@ To get a better understanding of the database structure, you can view the Entity
 For a direct look at the main ERD, see below:
 
 ![ERD Wa Bot CS BE](https://i.imgur.com/bjkBTEf.png)
+
+<!-- TOC --><a name="demo"></a>
+
+## Demo
+
+We encourage users to try out the demo of the application to experience its features and functionalities firsthand. The demo allows users to interact with the API and understand its capabilities before diving into the configuration details. Make sure to review the prerequisites and installation instructions above to set up your environment correctly.
+
+[Demo Link for Wa Bot CS BE](https://wa-bot-cs-proxy.vercel.app)
+
+<!-- TOC --><a name="dependencies"></a>
 
 ## Dependencies
 
